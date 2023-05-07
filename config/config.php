@@ -3,6 +3,7 @@
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 $route = require __DIR__ . '/route.php';
+use yii\web\Response;
 
 $config = [
     'id' => 'micro-app',
@@ -24,6 +25,14 @@ $config = [
         ],
     ],
 	'params' => $params,
+    'bootstrap' => [
+        [
+            'class' => 'yii\filters\ContentNegotiator',
+            'formats' => [
+                'application/json' => Response::FORMAT_JSON,
+            ],
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {
