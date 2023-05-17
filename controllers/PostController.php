@@ -2,23 +2,29 @@
 
 namespace app\controllers;
 
-use yii\rest\ActiveController;
+use Yii;
+use app\classes\RestController;
 
-class PostController extends ActiveController
+class PostController extends RestController
 {
     public $modelClass = 'app\models\Post';
 
-    public function behaviors()
-    {
-        // remove rateLimiter which requires an authenticated user to work
-        $behaviors = parent::behaviors();
-        unset($behaviors['rateLimiter']);
-        return $behaviors;
-    }
+    // public function behaviors()
+    // {
+    //     // remove rateLimiter which requires an authenticated user to work
+    //     $behaviors = parent::behaviors();
+    //     unset($behaviors['rateLimiter']);
+    //     return $behaviors;
+    // }
 
     public function actionHello()
     {
-		$dummy = 1234;
-        return 'Hello !'.$dummy;
+        return $this->behaviors();
+        // return $this->id;
+    }
+
+    public function actionGo($key)
+    {
+        return Yii::getAlias($key);
     }
 }

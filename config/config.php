@@ -17,6 +17,11 @@ $config = [
 			// !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
 			'cookieValidationKey' => 'yMeP77sAVkPGlbMDho_4OqJHIse-Nogy',
 		],
+        'user' => [
+            'identityClass' => 'app\models\User',
+            'enableSession' => false,
+            'loginUrl' => null
+        ],
         'db' => $db,
         'urlManager' => [
             'enablePrettyUrl' => true,
